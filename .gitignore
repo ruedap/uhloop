@@ -20,3 +20,5 @@
 # Ignore bundled gems.
 /vendor/bundle
 
+# Ignore foreman environment file
+.env
