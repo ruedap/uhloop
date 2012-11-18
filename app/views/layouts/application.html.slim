@@ -3,6 +3,9 @@ html dir="ltr" lang="ja" xml:lang="ja" xmlns:fb="https://www.facebook.com/2008/f
   head
     meta content="text/html; charset=utf-8" http-equiv="content-type"
     title ウタダヒカループ
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
     meta content="ja" name="language"
     meta content="ウタダヒカループでは、YouTubeで公開されている宇多田ヒカル公式のミュージックビデオを、ちょっとだけライブ感覚で半永久的に楽しむことができます。再生されるミュージックビデオは、閲覧者全員が同じ曲目・同じ再生時間であり、クリックで送信できるメッセージも閲覧者全員がリアルタイムに受信します。このサイトは宇多田ヒカル本人および所属事務所とは関係がなく、非公式のものであり、@ruedapが個人で制作・運営しています。" name="description"
     meta content="宇多田ヒカル,ウタダヒカループ,UTADAHIKALOOP,UHLOOP,ぼんじゅーる,ミュージックビデオ,YouTube,動画" name="keywords"
