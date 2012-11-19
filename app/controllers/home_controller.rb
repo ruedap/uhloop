@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-  protect_from_forgery :except => :auth # stop rails CSRF protection for this action
 
   def index
     @ssut = "#{Time.now.to_i}000"  # 前身Node.jsアプリのUNIXタイムが13桁だったので
@@ -7,7 +6,13 @@ class HomeController < ApplicationController
   end
 
   def create
-    Pusher["channel"].trigger("message-event", params[:text])
-    render :text => "success"
+    if params[:message]
+      Pusher["channel"].trigger("message-event", params[:message])
+      render :text => "success"
+    elsif params[:counter]
+      Pusher["channel"].trigger("counter-event", params[:counter])
+      render :text => "success"
+    end
   end
+
 end

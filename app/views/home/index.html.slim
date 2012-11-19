@@ -12,38 +12,52 @@ javascript:
   params.wmode = "direct";
   var attributes = {};
   attributes.id = "uhloop";
-  swfobject.embedSWF("uhloop.swf", "content", "90%", "100%", "10.0.0", "express_install.swf", flashvars, params, attributes);
-  javascript:
-    function receivedChatMessage(num, x, y) {
-      getFlashObject("uhloop").receivedChatMessage(num, x, y);
+  swfobject.embedSWF("uhloop.swf", "content", "100%", "100%", "10.0.0", "express_install.swf", flashvars, params, attributes);
+javascript:
+  function receivedChatMessage(num, x, y) {
+    getFlashObject("uhloop").receivedChatMessage(num, x, y);
+  }
+  function receivedCounter(count) {
+    getFlashObject("uhloop").receivedCounter(count);
+  }
+  function getFlashObject(swfName) {
+    if (navigator.appName.indexOf("Microsoft") != -1) {
+      return window[swfName]
+    } else {
+      return document[swfName]
     }
-    function receivedCounter(count) {
-      getFlashObject("uhloop").receivedCounter(count);
-    }
-    function getFlashObject(swfName) {
-      if (navigator.appName.indexOf("Microsoft") != -1) {
-        return window[swfName]
-      } else {
-        return document[swfName]
-      }
-    }
-    function sendChatMessage(num, x, y) {
-      var socket_id = pusher.connection.socket_id;
-      var json = { "socket_id" : socket_id, "num" : num, "x" : x, "y" : y };
-      var str = JSON.stringify(json);
-      $.ajax({
-        type: "POST",
-        url: "/home/create",
-        data: "text="+str,
-        success: function() {}
-      });
-    }
+  }
+  function sendChatMessage(num, x, y) {
+    var socket_id = pusher.connection.socket_id;
+    var json = { "socket_id" : socket_id, "num" : num, "x" : x, "y" : y };
+    var str = JSON.stringify(json);
+    $.ajax({
+      type: "POST",
+      url: "/home/create",
+      data: "message="+str,
+      success: function() {}
+    });
+  }
+  function sendCounter(count) {
+    var socket_id = pusher.connection.socket_id;
+    var json = { "socket_id" : socket_id, "count" : count };
+    var str = JSON.stringify(json);
+    $.ajax({
+      type: "POST",
+      url: "/home/create",
+      data: "counter="+str,
+      success: function() {}
+    });
+  }
 = javascript_include_tag "http://js.pusher.com/1.12/pusher.min.js"
 javascript:
   var pusher;
   var channel;
-  $(document).ready(function(){
+  function connectUHLoop() {
     pusher  = new Pusher("#{Pusher.key}");
+    pusher.connection.bind("connected", function() {
+      sendCounter(1);
+    });
     channel = pusher.subscribe("channel");
     channel.bind("message-event", function(json) {
       try {
@@ -52,7 +66,10 @@ javascript:
       } catch (e) { return; }
       receivedChatMessage(json.num, json.x, json.y);
     });
-  });
+    channel.bind("counter-event", function(json) {
+      receivedCounter(json.count);
+    });
+  }
 css:
   html, body { height: 100%; overflow: hidden; }
   body { margin: 0; font-size: 10px; }
