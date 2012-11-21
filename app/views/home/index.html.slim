@@ -1,46 +1,7 @@
-script src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js" type="text/javascript"
-javascript:
-  var flashvars = {};
-  flashvars.ssut = #{@ssut};
-  flashvars.cint = #{@cint};
-  var params = {};
-  params.menu = "false";
-  params.scale = "noScale";
-  params.allowFullscreen = "true";
-  params.allowScriptAccess = "always";
-  params.bgcolor = "#090e0d";
-  params.wmode = "direct";
-  var attributes = {};
-  attributes.id = "uhloop";
-  swfobject.embedSWF("uhloop.swf", "content", "100%", "100%", "10.0.0", "express_install.swf", flashvars, params, attributes);
-/ javascript:
-  / function receivedChatMessage(num, x, y) {
-    / getFlashObject("uhloop").receivedChatMessage(num, x, y);
-  / }
-  / function receivedCounter(count) {
-    / getFlashObject("uhloop").receivedCounter(count);
-  / }
-  / function getFlashObject(swfName) {
-    / if (navigator.appName.indexOf("Microsoft") != -1) {
-      / return window[swfName]
-    / } else {
-      / return document[swfName]
-    / }
-  / }
-/ script src="/socket.io/socket.io.js"
-/ javascript:
-  / var socket;
-  / function connectionSocketIO() { }
-  / function sendChatMessage(num, x, y) { }
-css:
-  html, body { height: 100%; overflow: hidden; }
-  body { margin: 0; font-size: 10px; }
-body
-#content
+= content_tag 'div', id: 'uhloop-content', data: {ssut: @ssut, cint: @cint, 'pusher-key' => Pusher.key} do
   p ウタダヒカループでは、YouTubeで公開されている宇多田ヒカル公式のミュージックビデオを、ちょっとだけライブ感覚で半永久的に楽しむことができます。再生されるミュージックビデオは、閲覧者全員が同じ曲目・同じ再生時間であり、クリックで送信できるメッセージも閲覧者全員がリアルタイムに受信します。このサイトは宇多田ヒカル本人および所属事務所とは関係がなく、非公式のものであり、@ruedapが個人で制作・運営しています。
   br/
   p ウタダヒカループの再生には Flash Player が必要です。
   p
     a href="http://www.adobe.com/go/getflashplayer"
       img alt="Get Adobe Flash player" src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"
-  p
