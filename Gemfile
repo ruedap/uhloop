@@ -11,6 +11,7 @@ gem 'sass-rails',   '3.2.3'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'pusher', '0.11.0'
 gem 'thin', '1.5.0'
+gem 'newrelic_rpm', '3.4.2.1'
 
 group :assets do
   gem 'uglifier', '>= 1.0.3'
