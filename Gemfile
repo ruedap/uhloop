@@ -13,10 +13,11 @@ gem 'sass', '3.2.13'
 gem 'sass-rails', '4.0.1'
 gem 'coffee-rails', '4.0.1'
 gem 'pusher', '0.12.0'
-gem 'newrelic_rpm', '3.7.1.180'
+gem 'uglifier', '2.4.0'
 
-group :assets do
-  gem 'uglifier', '2.4.0'
+group :production, :staging do
+  gem 'rails_12factor', '0.0.2' # for Heroku assets precompile
+  gem 'newrelic_rpm', '3.7.1.180'
 end
 
 group :development do
