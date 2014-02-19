@@ -7,7 +7,7 @@ gem 'pg', '0.17.1'
 
 gem 'thin', '1.6.1'
 gem 'jquery-rails', '3.1.0'
-gem 'haml', '4.0.4'
+gem 'haml', '4.0.5'
 gem 'haml-rails', '0.5.3'
 gem 'sass', '3.2.13'
 gem 'sass-rails', '4.0.1'
