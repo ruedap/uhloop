@@ -4,3 +4,12 @@ notifications:
   hipchat:
     rooms:
       secure: JVuVdmufZgmSvZzyzBSCfrv2nwQRMIUbxizxCRH55BJq0jiXfni6Egd/PMqMAvajPxjyeuXOR4/WdLPqRUZReH12rRuDaqGhZumRHHSCIxn8GsVL17O8JWaRbhMsFd3nvOlOS6rK95kB/hO4LHFtDi1EwbDpZiQd7ZGP6jy6Cz4=
+deploy:
+  provider: heroku
+  api_key:
+    secure: Se188oMu0Oq8CEY24d+YYy3TlKg8aWse6TPB0XP7RS8N6EKkPMlzY5cCiSB+KVDSktxj3UwEnynMumXWKUTkL4zBGIqyQb7NIOrMpKjkX+YzCeC/1TC55XWXR0UChEhwxl3PVbLa7Y+uIx0GFQ3XrHmXgmH3dIjLw0VHBzVg1Tk=
+  app:
+    master: uhloop
+    staging: uhloop-staging
+  on:
+    repo: ruedap/uhloop
