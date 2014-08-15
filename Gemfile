@@ -14,6 +14,7 @@ gem 'sass-rails', '4.0.1'
 gem 'coffee-rails', '4.0.1'
 gem 'pusher', '0.12.0'
 gem 'uglifier', '2.4.0'
+gem 'rack-canonical-host', '0.1.0'
 
 group :production, :staging do
   gem 'rails_12factor', '0.0.2' # for Heroku assets precompile
