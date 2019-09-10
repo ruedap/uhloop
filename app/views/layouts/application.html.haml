@@ -1,0 +1,33 @@
+!!!
+%html(dir='ltr' lang='ja' xml:lang='ja' xmlns:fb='https://www.facebook.com/2008/fbml' xmlns:og='http://ogp.me/ns#')
+  %head
+    %meta(content='text/html; charset=utf-8' http-equiv='content-type')
+    %title ウタダヒカループ
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = favicon_link_tag
+    = csrf_meta_tags
+    %meta(name='language' content='ja')
+    %meta(name='description' content='ウタダヒカループでは、YouTubeで公開されている宇多田ヒカル公式のミュージックビデオを、ちょっとだけライブ感覚で半永久的に楽しむことができます。再生されるミュージックビデオは、閲覧者全員が同じ曲目・同じ再生時間であり、クリックで送信できるメッセージも閲覧者全員がリアルタイムに受信します。このサイトは宇多田ヒカル本人および所属事務所とは関係がなく、非公式のものであり、@ruedapが個人で制作・運営しています。')
+    %meta(name='keywords' content='宇多田ヒカル,ウタダヒカループ,UTADAHIKALOOP,UHLOOP,ぼんじゅーる,ミュージックビデオ,YouTube,動画')
+    %meta(property='og:title' content='宇多田ヒカル大好き専用「ウタダヒカループ」')
+    %meta(property='og:url' content='http://uhloop.com/')
+    %meta(property='og:image' content='http://uhloop.com/og_image_facebook.png')
+    %meta(property='og:type' content='website')
+    %meta(property='og:description' content='ウタダヒカループでは、YouTubeで公開されている宇多田ヒカル公式のミュージックビデオを、ちょっとだけライブ感覚で半永久的に楽しむことができます。再生されるミュージックビデオは、閲覧者全員が同じ曲目・同じ再生時間であり、クリックで送信できるメッセージも閲覧者全員がリアルタイムに受信します。')
+    %meta(property='og:site_name' content='ウタダヒカループ')
+    %meta(property='fb:admins' content='100000124028900')
+    %link(href="https://uhloop.com/" rel="canonical")
+  %body
+    = yield
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36478654-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
