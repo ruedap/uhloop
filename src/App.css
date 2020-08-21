@@ -1,0 +1,14 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.App-logo {
+  fill: #fff;
+  width: 100%;
+  margin-bottom: 1rem;
+  max-width: 320px;
+}
